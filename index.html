@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Fitness Coach</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>🏋️ Personalized Workout Generator</h1>
+    <form method="POST" action="/generate">
+      <input type="text" name="name" placeholder="Your Name" required><br>
+      <input type="number" name="age" placeholder="Your Age" required><br>
+      <select name="gender" required>
+        <option value="">Select Gender</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+      </select><br>
+      <input type="text" name="goal" placeholder="Goal (e.g. fat loss, muscle gain)" required><br>
+      <input type="text" name="experience" placeholder="Experience Level" required><br>
+      <input type="text" name="equipment" placeholder="Available Equipment" required><br>
+      <button type="submit">Generate Workout Plan</button>
+    </form>
+
+    {% if workout_plan %}
+      <div class="result">
+        <h2>💪 Personalized Plan for {{ name }}</h2>
+        <pre>{{ workout_plan }}</pre>
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>
